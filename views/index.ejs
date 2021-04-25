@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="stylesheets/animate.css">
+<link rel="stylesheet" href="stylesheets/index.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.scrollex/0.2.1/jquery.scrollex.js" integrity="sha512-069abHumC5vSw2I3S4RHJdEjNPTzFCJpYR6xceG3Tps9l7YBfci3Zohlq2oWUBLLP5CxAJsaAjY2fh7atpmqpQ==" crossorigin="anonymous"></script>
+
+<style>
+
+
+</style>
+<script>
+		function submitEmailForm(form) {
+		
+			var obj = new XMLHttpRequest();
+			obj.onreadystatechange = function(){
+				if(obj.readyState == 4){
+					if(obj.status == 200){
+						var res = JSON.parse(obj.responseText);
+						alert(res.message);
+						form.reset();					}
+					else{
+						alert("XMLHttp status " + obj.status + ": " + obj.statusText);
+					}
+				}
+			};
+			obj.open("post", form.action, true);
+			obj.setRequestHeader("Content-Type", "application/json"); // NOTICE: "application/json"
+			obj.send(JSON.stringify({ name: form.name.value, object: form.object.value, message: form.message.value }));
+			return false;
+		}
+	</script>
+<script>
+$(document).ready(function(){
+  // Add smooth scrolling to all links
+  $("a").on('click', function(event) {
+
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (1400) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 1400, function(){
+   
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+});
+</script>
+
+<script>
+
+$(function() {
+$('.animation-element').scrollex({
+		mode: 'top',
+		top:'-70%',
+		initialize: function() {
+					
+					},
+		enter:	function() {
+		$(this).addClass('in-view');
+						
+				},
+		leave:	function() {
+					$(this).removeClass('in-view');	
+				}
+
+	});
+	$('.item_img_about').scrollex({
+		mode: 'middle',
+		initialize: function() {
+							$(this).addClass('inactive');
+					},
+		enter: function() {
+						$(this).removeClass('inactive');
+						},
+		leave: function() {
+						$(this).addClass('inactive');
+				}
+
+	});	
+	$('.item_img').scrollex({
+		mode:'middle',
+		scroll: function(progress) {
+			$(this).css('opacity', Math.max(0, Math.min(1, progress)));
+
+			}
+	});
+	
+	$('.item_div').scrollex({
+		mode: 'middle',
+		initialize: function() {
+						$(this).addClass('inactive');
+					},
+		enter:	function() {
+						$(this).removeClass('inactive');
+				},
+		leave:	function() {
+						$(this).addClass('inactive');
+				}
+
+	});
+	$('.item_contact').scrollex({
+		mode: 'middle',
+		initialize: function() {
+							$(this).addClass('inactive');
+					},
+		enter: function() {
+						$(this).removeClass('inactive');
+						},
+		leave: function() {
+						$(this).addClass('inactive');
+				}
+
+	});		
+
+});
+</script>
+</head>
+	<body>
+
+	<div class="loader-container">
+	<div>
+		<img src="images/inf.gif" class="loader">
+	</div>
+	
+	</div>
+	<script>
+		const loaderContainer = document.querySelector('.loader-container');
+		window.addEventListener('load', () =>{
+			loaderContainer.classList.add('hide');
+		})
+	</script>
+		<div id="myNav" class="overlay">
+			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+			<div class="overlay-content">
+				<a href="#" onclick="closeNav()">Home</a>
+				<a href="#work" onclick="closeNav()">Work experiences</a>
+				<a href="#education" onclick="closeNav()">Education</a>
+				<a href="#projects" onclick="closeNav()">Projects</a>
+				<a href="#contact" onclick="closeNav()">Contact</a>
+			</div>
+		</div>
+
+		<div class="w3-display-container">
+			<span class="w3-display-topright w3-text-white w3-margin-right"style="font-size:30px;cursor:pointer; z-index:99;" onclick="openNav()">&#9776;</span>
+			<img class="mySlides animated" src="images/l.jpg" style="width:100%;object-fit:cover;">
+			<img class="mySlides animated" src="images/s.jpg" style="width:100%;object-fit:cover;">
+			<img class="mySlides animated" src="images/book.jpg" style="width:100%;object-fit:cover;">
+			<span class="w3-display-topleft w3-xxlarge w3-text-white w3-margin-left"style="font-family:'Dancing Script';">Portfolio</span>
+			<p class="w3-display-middle  w3-text-white w3-hide-small"style="padding:64px; background-color:rgba(0,0,0,0.5);">
+				<span class="w3-xxlarge">I'm Andrea</span></br>
+				<span class="w3-xlarge">I'm a devoloper, a football coach and a student</span>
+			</p>
+			<p class="w3-display-middle  w3-text-white w3-hide-medium w3-hide-large" style="padding:32px;background-color:rgba(0,0,0,0.5);">
+				<span class="w3-xlarge">I'm Andrea</span></br>
+				<span class="w3-large">I'm a devoloper, a football coach and a student</span>
+			</p>
+		</div>
+		
+		<!-- The navigation menu -->
+		<div class="navbar w3-hide-small">
+			<a class="active" href="#">Home</a>
+			<a href="#work">Work experiences</a>
+			<a href="#education">Education</a>
+			<a href="#projects">Projects</a>
+			<a href="#contact">Contact</a>
+		</div>
+	
+		<div class="w3-container w3-center w3-padding-64" style="background-image:url(images/code.jpg); background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover;">
+			<a href="#contact"><button class="button w3-xxlarge" style="font-family:'Dancing Script';"> Contact me</button></a>
+		</div>
+		<div class="w3-row-padding w3-padding-16 w3-container w3-light-grey">
+			<div class="w3-content">
+				<div class="w3-half w3-center">
+					<h1>About me</h1>
+					<p>I'm Andrea. I'm 23.</p>
+					<p> I love sports, espacially football.</p>
+					<p>I like programming because I think it's a powerful means to develop own ideas.</p>
+					<br>
+					<a href="other/cvmorandi.pdf" target="_blank"><button class="button w3-hide-small">Download my CV<br>
+					<i class="fa fa-arrow-circle-o-down w3-xlarge" aria-hidden="true"></i>
+					</button>
+					</a>
+				</div>
+				<div class="w3-half w3-center w3-padding-16">
+					<img src="images/avataaars.png" height="200px" width="200px" style="border-style: solid; border-size:20px;" class="item_img_about w3-circle w3-card-4">
+				</div>
+			</div>
+		</div>
+		<div id="work" class="w3-row-padding w3-white w3-padding-16 w3-container">
+			<div class="w3-content ">
+				<div class="w3-third w3-center">
+					<img class="item_img" src="images/w.png" width="300px"/>
+				</div>
+				<div class="w3-twothird">
+					<h2 class="w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge"></i>Work Experiences</h2>
+					<div class="w3-container item_div">
+						<h5 class="w3-opacity"><b>BANCA POPOLARE DI SONDRIO</b></h5>
+						<h6><i class="fa fa-calendar fa-fw w3-margin-right"></i>05/2016 - 06/2016</h6>
+						<p>Employed as: intern/trainee - practicum | Company sector: Administrative.</p>
+					</div>
+					<br>
+					<div class="w3-container item_div">
+						<h5 class="w3-opacity"><b>STUDIO APOGEO</b></h5>
+						<h6><i class="fa fa-calendar fa-fw w3-margin-right"></i>01/2016 - 01/2016</h6>
+						<p>Employed as: intern/trainee - practicum | Company sector: Finance.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div id="education" class="w3-row-padding w3-padding-16 w3-container w3-light-grey">
+			<div class="w3-content">
+				<div class="w3-twothird">
+					<h2 class="w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-black"></i>Education</h2>
+					<div class="w3-container item_div">
+						<h5 class="w3-opacity"><b>1st level degree in Computer Science</b></h5>
+						<h6 class=""><i class="fa fa-calendar fa-fw w3-margin-right"></i>2017-2020</h6>
+						<p class="">Università degli Studi INSUBRIA VARESE-COMO Dipartimento di Scienze Teoriche e Applicate Corso di laurea in informatica</p>
+					</div>
+					<br>
+					<div class="w3-container item_div">
+						<h5 class="w3-opacity"><b>TECHNICAL CERTIFICATE</b></h5>
+						<h6 class=""><i class="fa fa-calendar fa-fw w3-margin-right"></i>2017</h6>
+						<p class="">Vocational School, Economics sector, Administration, Finance and Marketing specialisation,Business information systems focus.</p>
+					</div>
+				</div>
+				<div class="w3-third w3-center w3-padding-64">
+					<img class="item_img" src="images/n.png" width="300px"/>
+				</div>
+			</div>
+		</div>
+<div id="projects" class="row w3-padding-16 w3-white animation-element slide-left">
+	<a href="https://www.francesport.it" target="_black" style="text-decoration:none;">
+		<div class="column project">
+			<img src="images/sp.jpg" class="project_img">
+			<div class="w3-light-grey w3-center project_caption" >
+				<h4><b>Website</b></h4>
+				<p class="w3-hide-small">I developed the website for society in which I play</p>
+			</div>
+		</div>
+	</a>
+	<a href="https://game-quiz-en.000webhostapp.com/index.html" target="_black" style="text-decoration:none;">
+   <div class="column project">
+    <img src="images/quiz.jpg" class="project_img">
+	<div class="w3-light-grey w3-center project_caption" >
+		<h4><b>Quiz</b></h4>
+		<p class="w3-hide-small">I developed a small quiz as serious game.</p>
+	</div>
+  </div>
+  </a>
+  <a href="https://colab.research.google.com/drive/1tVMg1tGZ23LA6UCyLSON1IYeW-wlFyIh?usp=sharing" target="_black" style="text-decoration:none;">
+   <div class="column project">
+    <img src="images/ml.png" class="project_img">
+	<div class="w3-light-grey w3-center project_caption" >
+		<h4><b>Intelligent system</b></h4>
+		<p class="w3-hide-small">Here some experiments with scikit-learn</p>
+	</div>
+  </div>
+  </a>
+   <div class="column project">
+    <img src="images/tops.jpg" class="project_img">
+	<div class="w3-light-grey w3-center project_caption" >
+		<h4><b>Application with Flutter</b></h4>
+		<p class="w3-hide-small">I'm developing an app with my friends</p>
+	</div>
+  </div>
+</div>
+
+	<!--	<div id="contact" class="w3-padding-64" style="">
+		<div class="w3-content item_contact">
+		 <p class="w3-large w3-text-white w3-hide-small">Contact me</p>
+
+			<div class="w3-container ">
+				<form action="/" method="POST" onsubmit="return submitEmailForm(this);">
+					<label for="name" class="w3-text-white">Company</label>
+					<input type="text" name="name" placeholder="Company..">
+					<label for="object" class="w3-text-white">Object</label>
+					<input type="text" name="object" placeholder="Object..">
+					<label for="message" class="w3-text-white">Subject</label>
+					<textarea name="message" placeholder="Write here your message.." style="height:200px" maxlength="159"></textarea>
+					<button type="submit" class="button">Submit <i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+				</form>
+			</div>
+		
+		
+		</div>
+		</div>-->
+		<footer class="w3-black">
+		<div class="w3-content ">
+		<hr>
+		<ul class="social-media-list">
+				<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+            </ul>
+		</div>
+		<br>
+		<div class="w3-center w3-text-white">
+			<p><span>Scrollex by </span><a href='https://github.com/ajlkn/jquery.scrollex'>jquery.scrollex</a></p>
+			<p><span>Illustration by </span><span><a href="https://storyset.com/work"> Freepik Storyset</a></span>|<span><a href="https://storyset.com/people">Freepik Storyset</a></span></p>
+            <p><span>Image by </span><a href='https://www.freepik.com/photos/light'>Light photo created by jcomp - www.freepik.com</a></p>
+         </div>
+		</footer>
+
+<script>
+  var slideIndex = 0;
+  showSlides();
+
+  function showSlides() {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {slideIndex = 1}
+    slides[slideIndex-1].style.display = "block";
+	slides[slideIndex-1].classList.add("fadeIn");
+    setTimeout(showSlides, 4000); // Change image every 2 seconds
+  }
+  </script>
+<script>
+function openNav() {
+  document.getElementById("myNav").style.height = "100%";
+}
+
+function closeNav() {
+  document.getElementById("myNav").style.height = "0%";
+}
+</script>
+
+     
+
+
+</body>
+</html>
